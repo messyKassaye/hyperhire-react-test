@@ -23,7 +23,7 @@ const CollectionCard = ({ collection }: Props) => {
           modules={[Navigation]}
           loop={true}
           autoplay={{
-            delay: 1000,
+            delay: 3000,
           }}
         >
           {collection.items.map((item) => (
