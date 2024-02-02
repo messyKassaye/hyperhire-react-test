@@ -13,6 +13,8 @@ const CollectionItemsCard = ({ items }: Props) => {
       rating,
       preface,
       tagsOnImage,
+      isTrial,
+      prdType,
     },
   } = items;
   return (
@@ -27,11 +29,11 @@ const CollectionItemsCard = ({ items }: Props) => {
           height: "150px",
         }}
       >
-        <div className="flex items-center justify-between bg-[#009e8a] text-black gap-1">
+        <div className="flex items-center justify-between bg-[#009e8a] text-black gap-1 px-1">
           <Icon
             icon={"carbon:return"}
             color="white"
-            fontSize={24}
+            fontSize={20}
             className="font-bold"
           />
           <span>{tagsOnImage}</span>
@@ -39,8 +41,20 @@ const CollectionItemsCard = ({ items }: Props) => {
       </div>
       <span>{title}</span>
       {discountPrice && (
-        <span className="font-bold text-lg">{`${discountRate}%  ${discountPrice?.toLocaleString()}`}</span>
+        <div className="flex items-start justify-center gap-3">
+          <span className="text-lg font-bold">{`${discountRate}%`}</span>
+          <span className="text-lg font-bold">
+            {discountPrice?.toLocaleString()}
+            <sub>{prdType}</sub>
+          </span>
+        </div>
       )}
+      {isTrial && (
+        <div className="isTrial">
+          <span>Free trial</span>
+        </div>
+      )}
+
       <div className="flex flex-center justify-start">
         <Icon icon={"material-symbols-light:star-rate"} />
         <span>{rating}</span>
