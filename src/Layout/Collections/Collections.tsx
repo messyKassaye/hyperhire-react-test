@@ -3,6 +3,7 @@ import { ICollections } from "../../models/collections.model";
 import AxiosService from "../../services/https.service";
 import { backend_url } from "../../utils/backend_urls";
 import CollectionCard from "../../components/CollectionCard/CollectionCard";
+import Loader from "../../components/Loader/Loader";
 
 const Collections = () => {
   const [loading, setLoading] = useState(true);
@@ -35,7 +36,11 @@ const Collections = () => {
   }, [collections]);
 
   if (loading) {
-    return <span>Loading...</span>;
+    return (
+      <div className="mt-10">
+        <Loader type="cards" />
+      </div>
+    );
   }
 
   if (error) {
